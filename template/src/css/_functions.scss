@@ -1,0 +1,20 @@
+@import "valiables";
+
+@mixin fontSize($fontSize){
+  font-size: #{$fontSize / $baseFontSize}rem;
+}
+
+@mixin fixedMargin($fontSize, $marginBottom, $lineHeight){
+  @include fontSize($fontSize);
+  margin-bottom:$marginBottom - (($fontSize * $lineHeight - $fontSize) / 2);
+  line-height:$lineHeight;
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}

@@ -1,0 +1,8 @@
+<% if (resetcss === 'reset-css') { %>@import "../../node_modules/reset-css/reset.css";<% }
+else if (resetcss === 'normalize.css') { %>@import "../../node_modules/normalize.css/normalize.css";<% } %>
+@import "valiables";
+@import "functions";
+body {
+  font-family: '-apple-system','Hiragino Kaku Gothic ProN','游ゴシック',YuGothic,Meiryo,sans-serif;
+  font-size: $baseFontSize;
+}
