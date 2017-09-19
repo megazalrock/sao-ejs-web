@@ -98,7 +98,15 @@ gulp.task(
   'build:pages',
   () => gulp.src([path.join(config.sourceDir, 'html/pages/*.ejs'), `!${path.join(config.sourceDir, '**', '_*.ejs')}`])
     .pipe(ejs(settings)).on('error', console.log)
-    .pipe(rename({ extname: '.html' }))
+    .pipe(rename((filePath) => {
+      const parsed = path.parse(filePath.basename);
+      if (parsed.ext !== '') {
+        filePath.basename = parsed.name;// eslint-disable-line no-param-reassign
+        filePath.extname = parsed.ext;// eslint-disable-line no-param-reassign
+      } else {
+        filePath.extname = '.html';// eslint-disable-line no-param-reassign
+      }
+    }))
     .pipe(gulp.dest(`${config.distDir}`))
 );
 
